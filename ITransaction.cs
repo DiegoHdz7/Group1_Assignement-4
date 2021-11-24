@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Group1_Assignement_4
 {
-    interface ITransaction
+     interface ITransaction
     {
+        void Withdraw(double amount, Person person);
+        void Deposit(double amount, Person person); 
     }
 }
+
+
