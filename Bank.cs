@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Group1_Assignement_4
 {
+    
     static class Bank
     {
         public static Dictionary<string, Account> ACCOUNTS { get; }
