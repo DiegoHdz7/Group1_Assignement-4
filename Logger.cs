@@ -8,6 +8,6 @@ namespace Group1_Assignement_4
 {
     //test
     static class Logger
-    {
+    {//testing
     }
 }
