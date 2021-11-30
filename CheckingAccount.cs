@@ -8,13 +8,56 @@ namespace Group1_Assignement_4
 {
     class CheckingAccount : Account, ITransaction
     {
-        public void Deposit(double amount, Person person)
+        private static double COST_PER_TRANSACTION = 0.05;
+        private static double INTEREST_RATE = 0.005;
+        private bool HasOverdraft;
+
+        public CheckingAccount (double balance = 0, bool hasOverdraft = false)
+            :base("CK-",balance)
         {
-            throw new NotImplementedException();
+            HasOverdraft = hasOverdraft;
+        }
+
+        public new void Deposit(double amount, Person person)
+        {
+            base.Deposit(amount, person);
+            base.OnTransactionOccur(person, new EventArgs()); 
         }
 
         public void Withdraw(double amount, Person person)
         {
+            foreach (var item in base.users)
+            {
+                if(person.Name != item.Name)
+                {
+                    base.OnTransactionOccur(person, new EventArgs()); 
+                    throw new AccountException(ExceptionEnum.NAME_NOT_ASSOCIATED_WITH_ACCOUNT);
+                }
+                else if (person.IsAuthenticated)
+                {
+                    base.OnTransactionOccur(person, new EventArgs()); 
+                    throw new AccountException(ExceptionEnum.USER_NOT_LOGGED_IN);
+                }
+                else if(amount > base.Balance && HasOverdraft == false)
+                {
+                    base.OnTransactionOccur(person, new EventArgs()); 
+                    throw new AccountException(ExceptionEnum.NO_OVERDRAFT);
+                }
+                else
+                {
+                    base.Deposit(-amount, person);
+                }
+            }
+        }
+
+        public override void PrepareMonthlyReport()
+        {
+            int transCount = base.transactions.Count;
+            double serviceCharge = transCount * COST_PER_TRANSACTION;
+            double interest = LowestBalance * INTEREST_RATE / 12;
+            Balance += interest;
+            Balance -= serviceCharge;
+            transactions.Clear();
             throw new NotImplementedException();
         }
     }
