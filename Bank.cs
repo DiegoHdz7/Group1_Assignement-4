@@ -29,14 +29,14 @@ AddPerson("Nicoletta", "2344-6789");   //10
 
 
 //initialize the ACCOUNTS collection
-/*AddAccount(new VisaAccount());              //VS-100000
+AddAccount(new VisaAccount());              //VS-100000
 AddAccount(new VisaAccount(150, -500));     //VS-100001
 AddAccount(new SavingAccount(5000));        //SV-100002
 AddAccount(new SavingAccount());            //SV-100003
 AddAccount(new CheckingAccount(2000));      //CK-100004
 AddAccount(new CheckingAccount(1500, true));//CK-100005
 AddAccount(new VisaAccount(50, -550));      //VS-100006
-AddAccount(new SavingAccount(1000));        //SV-100007 */
+AddAccount(new SavingAccount(1000));        //SV-100007 
 
 //associate users with accounts
 string number = "VS-100000";
