@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Group1_Assignement_4
 {
-    struct DayTime
+    public struct DayTime
     {
         private long minutes;
 

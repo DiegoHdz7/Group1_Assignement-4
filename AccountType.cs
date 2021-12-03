@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Group1_Assignement_4
 {
-    enum AccountType
+   public  enum AccountType
     {
         Checking,
         Saving,

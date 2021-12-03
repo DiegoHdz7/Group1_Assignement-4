@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Group1_Assignement_4
 {
-    class SavingAccount : Account, ITransaction
+    class SavingAccount : /*Account,*/ ITransaction
     {
         public void Deposit(double amount, Person person)
         {
@@ -17,5 +17,8 @@ namespace Group1_Assignement_4
         {
             throw new NotImplementedException();
         }
+
+        
+
     }
 }

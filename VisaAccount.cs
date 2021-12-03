@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Group1_Assignement_4
 {
-    class VisaAccount : Account, ITransaction
+    class VisaAccount : Account/*, ITransaction*/
     {
        private double CreditLimit;
         private static double INTEREST_RATE = 0.1995;
@@ -57,5 +57,7 @@ namespace Group1_Assignement_4
             transactions.Clear();
 
         }
+
+      
     }
 }
