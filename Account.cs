@@ -30,7 +30,7 @@ namespace Group1_Assignement_4
         {
             Balance += amount;
             LowestBalance = Balance;
-            Transaction transaction = new Transaction(Number, amount, person,Utils.);
+            Transaction transaction = new Transaction(Number, amount, person,Utils.Now);
             transactions.Add(transaction);
         }
 
