@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Group1_Assignement_4
 {
-    class LoginEventArgs
+    class LoginEventArgs : EventArgs
     {
         public string PersonName { get; }
         public bool Success { get; }
