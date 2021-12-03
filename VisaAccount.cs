@@ -20,7 +20,7 @@ namespace Group1_Assignement_4
         public void DoPayment(double amount, Person person)
         {
             base.Deposit(amount, person);
-            base.OnTransactionOccur(person, new EventArgs()); 
+            base.OnTransactionOccur(null, null); 
         }
 
         public void DoPurchase(double amount, Person person)
@@ -29,22 +29,22 @@ namespace Group1_Assignement_4
             {
                 if (person.Name != item.Name)
                 {
-                    base.OnTransactionOccur(person, new EventArgs()); 
+                    base.OnTransactionOccur(null, null); 
                     throw new AccountException(ExceptionEnum.NAME_NOT_ASSOCIATED_WITH_ACCOUNT);
                 }
                 else if (person.IsAuthenticated)
                 {
-                    base.OnTransactionOccur(person, new EventArgs()); 
+                    base.OnTransactionOccur(null, null); 
                     throw new AccountException(ExceptionEnum.USER_NOT_LOGGED_IN);
                 }
                 else if (amount > CreditLimit)
                 {
-                    base.OnTransactionOccur(person, new EventArgs()); 
+                    base.OnTransactionOccur(null, null); 
                     throw new AccountException(ExceptionEnum.CREDIT_LIMIT_HAS_BEEN_EXCEEDED);
                 }
                 else
                 {
-                    base.OnTransactionOccur(person, new EventArgs()); 
+                    base.OnTransactionOccur(null, null); 
                     base.Deposit(-amount, person);
                 }
             }

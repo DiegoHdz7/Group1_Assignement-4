@@ -21,7 +21,7 @@ namespace Group1_Assignement_4
         public new void Deposit(double amount, Person person)
         {
             base.Deposit(amount, person);
-            base.OnTransactionOccur(person, new EventArgs()); 
+            base.OnTransactionOccur(null, null); 
         }
 
         public void Withdraw(double amount, Person person)
@@ -30,17 +30,17 @@ namespace Group1_Assignement_4
             {
                 if(person.Name != item.Name)
                 {
-                    base.OnTransactionOccur(person, new EventArgs()); 
+                    base.OnTransactionOccur(null, null); 
                     throw new AccountException(ExceptionEnum.NAME_NOT_ASSOCIATED_WITH_ACCOUNT);
                 }
                 else if (person.IsAuthenticated)
                 {
-                    base.OnTransactionOccur(person, new EventArgs()); 
+                    base.OnTransactionOccur(null, null); 
                     throw new AccountException(ExceptionEnum.USER_NOT_LOGGED_IN);
                 }
                 else if(amount > base.Balance && HasOverdraft == false)
                 {
-                    base.OnTransactionOccur(person, new EventArgs()); 
+                    base.OnTransactionOccur(null, null); 
                     throw new AccountException(ExceptionEnum.NO_OVERDRAFT);
                 }
                 else
