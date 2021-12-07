@@ -33,7 +33,7 @@ namespace Group1_Assignement_4
         }
         public void Login(string password)
         {
-            if (this.password != password)
+            if (this.password.Equals(password) == false)
             {
                 IsAuthenticated = false;
                 throw new AccountException(ExceptionEnum.PASSWORD_INCORRECT);

@@ -26,14 +26,7 @@ namespace Group1_Assignement_4
         
         }
 
-        public static void RunTest()
-        {
-            Transaction transaction = new Transaction("SV 0770", 500.31, new Person("Sahansan", "12345678"), new DayTime());
-            Console.WriteLine(transaction);
-
-            transaction = new Transaction("SV 0770", -500.31, new Person("Sahansan", "12345678"), new DayTime());
-            Console.WriteLine(transaction);
-        }
+       
     }
 
 }

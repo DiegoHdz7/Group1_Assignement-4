@@ -68,7 +68,7 @@ namespace Group1_Assignement_4
             List<string> holder = new List<string>();
             foreach (var item in users)
             {
-                holder.Add($"{Number}, {item.Name}, {Balance}, {transactions}");
+                holder.Add($"{Number}, {item.Name}, {Balance}, {string.Join( " ",transactions)}");
             }
             foreach (var item in holder)
             {

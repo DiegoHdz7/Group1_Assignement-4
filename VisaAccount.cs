@@ -25,28 +25,35 @@ namespace Group1_Assignement_4
 
         public void DoPurchase(double amount, Person person)
         {
+            Boolean test=false;
+            Boolean isAccountAssociated=false;
+
             foreach (var item in base.users)
             {
-                if (person.Name != item.Name)
-                {
-                    base.OnTransactionOccur(null, null); 
-                    throw new AccountException(ExceptionEnum.NAME_NOT_ASSOCIATED_WITH_ACCOUNT);
-                }
-                else if (person.IsAuthenticated)
-                {
-                    base.OnTransactionOccur(null, null); 
-                    throw new AccountException(ExceptionEnum.USER_NOT_LOGGED_IN);
-                }
-                else if (amount > CreditLimit)
-                {
-                    base.OnTransactionOccur(null, null); 
-                    throw new AccountException(ExceptionEnum.CREDIT_LIMIT_HAS_BEEN_EXCEEDED);
-                }
-                else
-                {
-                    base.OnTransactionOccur(null, null); 
-                    base.Deposit(-amount, person);
-                }
+                if (item.Name.Equals(person.Name)) isAccountAssociated = true;
+            }
+
+            if (isAccountAssociated == false)
+            {
+                base.OnTransactionOccur(null, null);
+                throw new AccountException(ExceptionEnum.NAME_NOT_ASSOCIATED_WITH_ACCOUNT);
+            }
+
+            else if (person.IsAuthenticated != true)
+            {
+                base.OnTransactionOccur(null, null);
+                throw new AccountException(ExceptionEnum.USER_NOT_LOGGED_IN);
+            }
+
+            else if (amount > CreditLimit )
+            {
+                base.OnTransactionOccur(null, null);
+                new AccountException(ExceptionEnum.CREDIT_LIMIT_HAS_BEEN_EXCEEDED);
+            }
+
+            else {
+                base.OnTransactionOccur(null, null);
+                base.Deposit(-amount, person);
             }
         }
 

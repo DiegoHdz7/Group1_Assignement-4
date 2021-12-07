@@ -26,28 +26,38 @@ namespace Group1_Assignement_4
 
         public void Withdraw(double amount, Person person)
         {
+            Boolean flag = false;
             foreach (var item in base.users)
             {
-                if(person.Name != item.Name)
+                if (person.Name.Equals(item.Name) == false)
                 {
-                    base.OnTransactionOccur(null, null); 
-                    throw new AccountException(ExceptionEnum.NAME_NOT_ASSOCIATED_WITH_ACCOUNT);
+                    flag = true;
                 }
-                else if (person.IsAuthenticated)
-                {
-                    base.OnTransactionOccur(null, null); 
-                    throw new AccountException(ExceptionEnum.USER_NOT_LOGGED_IN);
-                }
-                else if(amount > base.Balance && HasOverdraft == false)
-                {
-                    base.OnTransactionOccur(null, null); 
-                    throw new AccountException(ExceptionEnum.NO_OVERDRAFT);
-                }
-                else
-                {
-                    base.Deposit(-amount, person);
-                }
+
             }
+
+            if (flag == false)
+            {
+                base.OnTransactionOccur(null, null);
+                throw new AccountException(ExceptionEnum.NAME_NOT_ASSOCIATED_WITH_ACCOUNT);
+            }
+
+            else if (person.IsAuthenticated != true)
+            {
+                Console.WriteLine(person);
+                base.OnTransactionOccur(null, null);
+                throw new AccountException(ExceptionEnum.USER_NOT_LOGGED_IN);
+            }
+            else if (amount > base.Balance && HasOverdraft == false)
+            {
+                base.OnTransactionOccur(null, null);
+                throw new AccountException(ExceptionEnum.NO_OVERDRAFT);
+            }
+            else
+            {
+                base.Deposit(-amount, person);
+            }
+           
         }
 
         public override void PrepareMonthlyReport()
@@ -58,7 +68,7 @@ namespace Group1_Assignement_4
             Balance += interest;
             Balance -= serviceCharge;
             transactions.Clear();
-            throw new NotImplementedException();
+             new NotImplementedException();
         }
     }
 }
